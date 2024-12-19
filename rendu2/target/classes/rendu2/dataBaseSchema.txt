@@ -1,0 +1,39 @@
+CREATE TABLE utilisateurs (
+    id_user SERIAL PRIMARY KEY,
+    nom VARCHAR(26),
+    prenom VARCHAR(26),
+    email VARCHAR(56),
+    type  VARCHAR(26) 
+);
+
+
+
+
+
+CREATE TABLE evenement (
+    id_event SERIAL PRIMARY KEY,
+    nom_event VARCHAR(26),
+    description VARCHAR(226),
+    id_user INT REFERENCES utilisateurs(id_user)
+);
+
+CREATE TABLE salles (
+    id_salle SERIAL PRIMARY KEY,
+    nom_salle VARCHAR(26),
+    capacite INT
+);
+
+CREATE TABLE terrain (
+    id_terrain SERIAL PRIMARY KEY,
+    nom_terrain VARCHAR(26),
+    type VARCHAR(26)
+);
+
+CREATE TABLE reservation (
+    id_reservation SERIAL PRIMARY KEY,
+    id_user INT REFERENCES utilisateurs(id_user),
+    id_event INT REFERENCES evenement(id_event),
+    id_salle INT REFERENCES salles(id_salle),
+    id_terrain INT REFERENCES terrain(id_terrain),
+    date_reservation DATE
+);
