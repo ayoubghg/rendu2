@@ -31,9 +31,10 @@ CREATE TABLE terrain (
 
 CREATE TABLE reservation (
     id_reservation SERIAL PRIMARY KEY,
-    id_user INT REFERENCES utilisateurs(id_user),
-    id_event INT REFERENCES evenement(id_event),
-    id_salle INT REFERENCES salles(id_salle),
-    id_terrain INT REFERENCES terrain(id_terrain),
+    id_user INT REFERENCES utilisateurs(id_user) ON UPDATE CASCADE ON DELETE CASCADE,
+    id_event INT REFERENCES evenement(id_event) ON UPDATE CASCADE ON DELETE CASCADE,
+    id_salle INT REFERENCES salles(id_salle) ON UPDATE CASCADE ON DELETE CASCADE,
+    id_terrain INT REFERENCES terrain(id_terrain) ON UPDATE CASCADE ON DELETE CASCADE,
     date_reservation DATE
 );
+
